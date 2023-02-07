@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const mysql = require('mysql2')
 const { json } = require('express');
 let port = process.env.PORT;
 if (port == null || port == "") {
