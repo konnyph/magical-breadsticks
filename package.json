@@ -1,0 +1,23 @@
+{
+  "name": "magical-breadsticks",
+  "version": "1.0.0",
+  "description": "AI generated Comic book generator with server functionality",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konnyph/magical-breadsticks.git"
+  },
+  "author": "Eugene Park, Konny Ho, Tim Aspesberro, Mark Green, Abigail Henderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/konnyph/magical-breadsticks/issues"
+  },
+  "homepage": "https://github.com/konnyph/magical-breadsticks#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
