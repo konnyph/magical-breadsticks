@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    text-align-last: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+a {
+    position: relative;
+    border: #27282c;
+    background: white;
+    color: black;
+    text-align: center;
+    text-decoration:none;
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    transition: 1s;
+     
+}
+
+a :hover {
+    background: #333;
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 75px #1e9bff;
+    border-radius: 12px;
+}
+
+a :before {
+
+  
+    position: absolute;
+    inset: 2px;
+
+}
+
+span {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    color: aliceblue;
+    background-color: black;
+}
+
+a i {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+a i:before {
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 10px;
+    height: 4px;
+    background: #27282c;
+    transform: translateX(-50%) skewX(325deg);
+    transition: 1s;
+}
+
+a:hover i:before {
+    width: 20px;
+    left: 80%;
+}
+
+
+a i:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 20%;
+    width: 10px;
+    height: 4px;
+    background: #27282c;
+    transform: translateX(-50%) skewX(325deg);
+    transition: 2s;
+}
+
+a:hover i:after {
+    width: 20px;
+    left: 80%;
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 4px;
+    }
+}
+
+
+@media (max-width: 720px) {
+    body {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 980px) {
+    body {
+        font-size: 12px;
+    }
+}
