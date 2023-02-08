@@ -56,35 +56,12 @@ h1 {
     infinite ; 
 }
 
-
 .lead {
     opacity: 0;
     transform: translateY(3rem);
     animation: fadeInUp 500ms ease calc(var(--typewriterSpeed) + 0.5s)
     forwards;
 }
-
-
-
-@keyframes typewriter {
-    to {
-        left:100%;
-    }
-}
-
-@keyframes blink {
-    to {
-        background: transparent;
-    }
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 .Location {
     font-family: 'Roboto Mono', monospace;
@@ -113,13 +90,30 @@ h1 {
     padding-left: 10px;
 }
 
-
-
 .nav-link {
     color: white;
+    font-weight: bold;
     margin: 0px 10px 0px 10px;
     border: solid 3px #ffffff9d;
     border-radius: 10px;
+}
+
+#nav-btn:hover {
+    background-color: #E4A11B;
+    color: #000000;
+    border: solid 3px #000000;
+    
+}
+
+#logout-btn {
+    color: #ffffff;
+    border: solid 3px #c00d0dc9;
+}
+
+#logout-btn:hover {
+    background-color: #c00d0dc9;
+    color: #000000;
+    border: solid 3px #000000;
 }
 
 #navbarNavDropdown {
@@ -131,7 +125,7 @@ h1 {
     margin-bottom: 20px;
     width:450px;
     height: auto;
-    border: 4px outset #8b0808;
+    border: 4px outset #c00d0dc9;
     border-radius: 20px;
 }
 
