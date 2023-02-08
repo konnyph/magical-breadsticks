@@ -6,8 +6,9 @@
 body { font-family: 'Roboto Mono', monospace;
     font-size: 15px;
     background-color: white;
-    margin: 0;
-    padding: 20px;
+    margin: 10px;
+    padding-top: 10%;
+    padding-bottom: 20px;
     color: #333;
     line-height: 1.6;
    text-align: center;
@@ -16,6 +17,11 @@ body { font-family: 'Roboto Mono', monospace;
 
   
 } 
+
+h1 {
+    display: inline;
+    font-weight: bold;
+}
 
 #madLibs {
     position: relative;
@@ -50,35 +56,12 @@ body { font-family: 'Roboto Mono', monospace;
     infinite ; 
 }
 
-
 .lead {
     opacity: 0;
     transform: translateY(3rem);
     animation: fadeInUp 500ms ease calc(var(--typewriterSpeed) + 0.5s)
     forwards;
 }
-
-
-
-@keyframes typewriter {
-    to {
-        left:100%;
-    }
-}
-
-@keyframes blink {
-    to {
-        background: transparent;
-    }
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 .Location {
     font-family: 'Roboto Mono', monospace;
@@ -95,7 +78,7 @@ body { font-family: 'Roboto Mono', monospace;
     background-color: #333;
     color: white;
     padding: 10px;
-    margin: 0;
+
 }
 
 .rounded-corners {
@@ -107,21 +90,43 @@ body { font-family: 'Roboto Mono', monospace;
     padding-left: 10px;
 }
 
-
-
 .nav-link {
     color: white;
+    font-weight: bold;
     margin: 0px 10px 0px 10px;
     border: solid 3px #ffffff9d;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+
+#nav-btn:hover {
+    background-color: #E4A11B;
+    color: #000000;
+    border: solid 3px #000000;
+    
+}
+
+#logout-btn {
+    color: #ffffff;
+    border: solid 3px #c00d0dc9;
+}
+
+#logout-btn:hover {
+    background-color: #c00d0dc9;
+    color: #000000;
+    border: solid 3px #000000;
 }
 
 #navbarNavDropdown {
     float: inline-end;
 }
 
-#page-buffer {
-    padding: 20px;
+#pagetwo-header {
+    padding: 10px;
+    margin-bottom: 20px;
+    width:450px;
+    height: auto;
+    border: 4px outset #c00d0dc9;
+    border-radius: 20px;
 }
 
 form {
@@ -139,7 +144,6 @@ footer {
         font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
         padding: 20px;
         color: white;
-        background-color: #333;
         text-align: center;
         position: absolute;
         bottom: 0;
