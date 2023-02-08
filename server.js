@@ -14,7 +14,7 @@ if (port == null || port == "") {
   port = 3001;
 }
 // turn on routes(kh)
-app.use(routes);
+
 
 // app.use() for session(kh)
 // app.use(session({
@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
-
+app.use(routes);
 // app.listen(port, () =>
 //   console.log(`Listening at http://localhost:${port}`)
 // );
