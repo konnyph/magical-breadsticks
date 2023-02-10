@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const Sequelize = require('sequelize');
-// const sequelize = new Sequelize(process.env.MYSQL_URI)
+const sequelize = new Sequelize(process.env.MYSQL_URI)
 
 const connection = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
@@ -14,4 +14,4 @@ const connection = process.env.JAWSDB_URL
       },
     });
 
-module.exports = connection;
+module.exports = sequelize;

@@ -10,20 +10,23 @@
 
 <body>
     <h1>Hello World</h1>
-    <form onsubmit="testLogin()">
-        <label for="uname">Username:</label><br>
-        <input type="text" id="uname" name="uname" value="Magical Breadstick"><br>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email" value="MagicB@mail.com"><br>
-        <label for="pword">Password:</label><br>
-        <input type="password" id="pword" name="pword" value="GTBC23"><br><br>
-        <input type="submit" value="Submit">
+    <form action="/login" method="post">
+        <label for="email">
+            <!-- font awesome icon -->
+            <i class="fas fa-user"></i>
+        </label>
+        <input type="text" name="email" placeholder="email" id="email" required>
+        <label for="password">
+            <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="submit" value="Login">
     </form>
-    <script>
+    <!-- <script>
 
 
         function testLogin(){alert("test")}
-    </script>
+    </script> -->
 </body>
 
 </body>
@@ -35,7 +38,7 @@
 <button type="submit" value='Try it' name='submit'>test</button>
 
 
-if ($query) {
+<!-- if ($query) {
  $row = mysqli_fetch_row($query);
  $staff_id = row[0];
  $dbUsername = row[3];
@@ -70,4 +73,4 @@ $password = strip_tags($password);
 $password = htmlspecialchars($password);
 
 $username = mysqli_real_escape_string($dbCon,$username);
-$password = mysqli_real_escape_string($dbCon,$password);
+$password = mysqli_real_escape_string($dbCon,$password); -->
