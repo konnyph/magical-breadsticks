@@ -14,7 +14,7 @@ User.init(
 
     email: {
       type: DataTypes.STRING,
-      // allowNull: false,
+      allowNull: true,
       unique: true,
       // checks for email format (foo@bar.com)
       validate: {
@@ -23,7 +23,7 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
   },
   {
