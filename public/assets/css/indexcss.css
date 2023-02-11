@@ -114,8 +114,15 @@ a:hover i:after {
 }
 */
 
+#signup-btn:hover {
+    background-color: #1567ff;
+    color: #000000;
+    border: solid 3px #000000;
+    
+}
+
 #form-content {
-    -webkit-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
   width: 50%;
@@ -133,8 +140,13 @@ a:hover i:after {
     justify-content: center;
 }
 
+#login-img {
+    border: solid 3px #000000;
+    border-radius: 30px;
+}
+
 input[type=text], input[type=password] {
-    background-color: #f6f6f6;
+  background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
   padding: 15px 32px;
@@ -164,8 +176,8 @@ input[type=submit]  {
     display: inline-block;
     text-transform: uppercase;
     font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
     margin: 5px 20px 40px 20px;
@@ -175,6 +187,19 @@ input[type=submit]  {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
+
+input[type=submit]:hover  {
+    background-color: #b48424;
+  }
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #fff;
+    border-bottom: 2px solid #fab732;
+  }
+  
+  input[type=text]:placeholder {
+    color: #000000;
+  }
 
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
