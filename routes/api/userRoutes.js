@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const user = require('../../models/User');
 const User = require('../../models/User.js');
 const bcrypt = require ('bcrypt');
 const { where } = require('sequelize');
@@ -20,23 +21,19 @@ router.get('/', async (req, res) => {
   }
 });
 
-// CREATE a new user
 router.post('/', async (req, res) => {
-  try {
-    const newUser = req.body;
-    // hash the password from req.body 
-    newUser.password = await bcrypt.hash(req.body.password, 10)
-    const userData = await User.create(newUser);
-      // password: req.body.password
-      req.session.save(() => {
-      req.session.loggedIn = true;
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(401).json(err);
-  }
-});
+      await user.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password
+    })
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.json(err.errors[0].message);
+      });
+  });
 
 // Login Route
 router.post('/login', async (req, res) => {
@@ -95,6 +92,4 @@ router.post('/logout', (req, res) => {
   }
 });
 
-
-
-module.exports = router;
+  module.exports=router
