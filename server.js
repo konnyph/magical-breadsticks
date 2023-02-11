@@ -8,7 +8,6 @@ const routes = require('./routes');
 const sequelize = require('./config/connection');
 const path = require('path');
 const dotenv = require('dotenv').config();
-const user = require('./models/user');
 
 let port = process.env.PORT;
 if (port == null || port == "") {
