@@ -1,12 +1,6 @@
 const router = require('express').Router();
+const api = require('./api');
 
-const apiRoutes = require('./api');
-
-// const database = require('../database');
-// router.get('/', function(req, res, next) {
-//     res.render('index', {title: 'Express', session : req.session});
-// });
-
-router.use('/api', apiRoutes);
+router.use('/api', api);
 
 module.exports = router;
