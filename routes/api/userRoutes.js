@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const user = require('../../models/User');
+const bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
     user.findAll({
@@ -16,7 +17,7 @@ router.post('/', async (req, res) => {
       await user.create({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password
+      password: await bcrypt.hash(req.body.password, 8)
     })
       .then((result) => {
         res.json(result);
