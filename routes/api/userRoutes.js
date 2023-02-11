@@ -32,7 +32,8 @@ router.post('/', async (req, res) => {
       const userData = await User.findOne({
         where: {
           email: req.body.email,
-          password: req.body.password
+          // we don't need this here
+          // password: req.body.password
         },
       });
   
@@ -43,7 +44,7 @@ router.post('/', async (req, res) => {
         return;
       }
   
-      const validPassword = await userData.checkPassword(req.body.password);
+      const validPassword = await bcrypt.compare(req.body.password, userData.password);
   
       if (!validPassword) {
         res
