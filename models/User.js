@@ -11,10 +11,16 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlphanumeric: true,
+      },
+    },
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       unique: true,
       // checks for email format (foo@bar.com)
       validate: {
@@ -23,7 +29,11 @@ User.init(
     },
     password: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false,
+      // must be longer than 7 characters
+      validate: {
+        len: [7]
+      }
     },
   },
   {
