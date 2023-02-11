@@ -14,26 +14,32 @@ router.get('/', async (req, res) => {
   });
     await bcrypt.compare(req.body.password, user.password) ? res.json(user):
     res.status(401).json({
-      message: `You are not logged in...`
+      message: `You are not logged in...please try again.`
     })
   } catch (err) {
     // res.status(500).json(err);
   }
 });
 
+// CREATE a new user
 router.post('/', async (req, res) => {
-      await user.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    })
-      .then((result) => {
-        res.json(result);
-      })
-      .catch((err) => {
-        res.json(err.errors[0].message);
-      });
-  });
+  try {
+    const newUser = req.body;
+    // hash the password from req.body 
+    newUser.password = await bcrypt.hash(req.body.password, 10)
+    const userData = await User.create(newUser);
+      // password: req.body.password
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(userData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(401).json({
+      message: `You are not logged in...please try again.`
+    });
+  }
+});
 
 // Login Route
 router.post('/login', async (req, res) => {
