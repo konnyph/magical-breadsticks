@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
       await user.create({
       name: req.body.name,
       email: req.body.email,
-      password: await bcrypt.hash(req.body.password, 8)
+      password: req.body.password
     })
       .then((result) => {
         res.json(result);
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
   router.post('/login', async (req, res) => {
     try {
-      const userData = await User.findOne({
+      const userData = await user.findOne({
         where: {
           email: req.body.email,
           // we don't need this here
@@ -68,15 +68,9 @@ router.post('/', async (req, res) => {
   });
   
   // Logout
-  router.post('/logout', (req, res) => {
-    // When the user logs out, destroy the session
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
+    router.get('/logout',(req,res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
 
   module.exports=router
