@@ -18,7 +18,7 @@ if (port == null || port == "") {
 // app.use(session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '/public/login.html')));
+app.use(express.static(`${__dirname}/public`));
 
 // Splash Page direct
 app.get('/', (req, res) => res.sendFile((`${__dirname}/public/index.html`)));
