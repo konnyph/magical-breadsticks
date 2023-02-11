@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Mono:ital,wght@1,300&display=swap"
     rel="stylesheet">
-    <link rel="icon" href="Images\breadstick-icon.jpg"/>
+    <link rel="icon" href="public/Images/breadstick-icon.jpg"/>
     <title>Magical Breadsticks</title>
 </head>
 
@@ -22,67 +22,23 @@
     </nav>
 
     <h1>Hello World</h1>
-    <form onsubmit="testLogin()">
-        <label for="uname">Username:</label><br>
-        <input type="text" id="uname" name="uname" value="Magical Breadstick"><br>
-        <label for="email">Email:</label><br>
-        <input type="text" id="email" name="email" value="MagicB@mail.com"><br>
-        <label for="pword">Password:</label><br>
-        <input type="password" id="pword" name="pword" value="GTBC23"><br><br>
-        <input type="submit" value="Submit">
+    <form action="/login" method="post">
+        <label for="email">
+            <!-- font awesome icon -->
+            <i class="fas fa-user"></i>
+        </label>
+        <input type="text" name="email" placeholder="email" id="email" required>
+        <label for="password">
+            <i class="fas fa-lock"></i>
+        </label>
+        <input type="password" name="password" placeholder="Password" id="password" required>
+        <input type="submit" value="Login">
     </form>
-
-    <footer class="fixed-bottom bg-dark"> Magical Breadsticks &copy; 2023 </footer>
     
-    <script>
-
-
-        function testLogin(){alert("test")}
-    </script>
 </body>
 
 </body>
 
 </html>
-<input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
 
 
-<button type="submit" value='Try it' name='submit'>test</button>
-
-
-if ($query) {
- $row = mysqli_fetch_row($query);
- $staff_id = row[0];
- $dbUsername = row[3];
- $dbPassword = row[5];
-}
-if ($username == $dbUsername && $password == $dbPassword) {
- $_SESSION['username'] = $username;
- $_SESSION['staff_id'] = $staff_ID;
- header('Location: user.php');
-} else {
- echo "Incorrect username and password";
-}
-
-
-if ($query) {
- $result = mysqli_fetch_array($query);
- $_SESSION['username'] = $result["username"];
- $_SESSION['staff_id'] = $result["staff_id"];;
-
- header('Location: user.php');
-} else {
-    echo "Incorrect username and password";
-}
-
-
-$username = trim($_POST['username']);
-$username = strip_tags($username);
-$username = htmlspecialchars($username);
-
-$password = trim($_POST['password']);
-$password = strip_tags($password);
-$password = htmlspecialchars($password);
-
-$username = mysqli_real_escape_string($dbCon,$username);
-$password = mysqli_real_escape_string($dbCon,$password);
