@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Mono:ital,wght@1,300&display=swap"
     rel="stylesheet">
+  <link rel="icon" href="Images\breadstick-icon.jpg"/>
   <title>Magical Breadsticks</title>
 </head>
 
@@ -21,13 +22,13 @@
     <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavDropdown">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="./comicindex.html">Home <span class="sr-only">(current)</span></a>
+          <a id="nav-btn" class="nav-link" href="./comicindex.html">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./history.html">History</a>
+          <a id="nav-btn" class="nav-link" href="./history.html">History</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-danger" href="./index.html">Log Out</a>
+          <a id="logout-btn" class="nav-link" href="./index.html">Log Out</a>
         </li>
       </ul>
     </div>
@@ -54,9 +55,10 @@
 
   <div id="pageTwo" class="invisible">
     <section id="storyTime" class="Location">
-      <div class="mx-auto bg-warning text-center" id="pagetwo-header">
+      <div class="mx-auto text-center" id="pagetwo-header">
         <h3>Your Magical Breadstick:</h3>
       </div>
+      <br>
       <br>
       <form>
         <div class="form-group">
@@ -71,9 +73,10 @@
         <div class="form-group">
           <label id="story4" for="storyFour"></label>
         </div>
+        <br>
         <button id="storySubmit" type="submit" class="btn btn-primary btn-success">Submit</button>
-        <button id="clear" class="btn btn-primary btn-warning">Clear</button>
-        <button href="./comicindex.html" button id="refresh" class="btn btn-primary"> refresh </button>
+        <button id="clear" class="btn btn-primary btn-danger">Clear</button>
+        <button href="./comicindex.html" button id="refresh" class="btn btn-warning"> refresh </button>
       </form>
       </section>
   </div>
