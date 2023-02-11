@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const user = require('../../models/User');
+const bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
     user.findAll({
@@ -28,10 +29,11 @@ router.post('/', async (req, res) => {
 
   router.post('/login', async (req, res) => {
     try {
-      const userData = await User.findOne({
+      const userData = await user.findOne({
         where: {
           email: req.body.email,
-          password: req.body.password
+          // we don't need this here
+          // password: req.body.password
         },
       });
   
@@ -42,7 +44,7 @@ router.post('/', async (req, res) => {
         return;
       }
   
-      const validPassword = await userData.checkPassword(req.body.password);
+      const validPassword = await bcrypt.compare(req.body.password, userData.password);
   
       if (!validPassword) {
         res
@@ -66,15 +68,9 @@ router.post('/', async (req, res) => {
   });
   
   // Logout
-  router.post('/logout', (req, res) => {
-    // When the user logs out, destroy the session
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
+    router.get('/logout',(req,res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
 
   module.exports=router
