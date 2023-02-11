@@ -1,14 +1,22 @@
 const router = require('express').Router();
 const User = require('../../models/User.js');
 const bcrypt = require ('bcrypt');
+const { where } = require('sequelize');
 
 // GET all users
 router.get('/', async (req, res) => {
   try {
-    const userData = await User.findAll();
-    res.status(200).json(userData);
+    const user = await User.findall({
+    where: {
+      email: req.body.email
+    }
+  });
+    await bcrypt.compare(req.body.password, user.password) ? res.json(user):
+    res.status(401).json({
+      message: `You are not logged in...`
+    })
   } catch (err) {
-    res.status(500).json(err);
+    // res.status(500).json(err);
   }
 });
 
@@ -33,28 +41,33 @@ router.post('/', async (req, res) => {
 // Login Route
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({
+    const user = await User.findOne({
       where: {
-        email: req.body.email,
-        password: req.body.password
-      },
+        email: req.body.email
+      }
     });
 
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
+    await bcrypt.compare(req.body.password, user.password) ? res.json(user) :
+    res.status(401).json({
+      message: `You are not logged in...`
+      });
+    
+
+    // if (!userData) {
+    //   res
+    //     .status(401)
+    //     .json({ message: 'Incorrect email or password. Please try again!' });
+    //   return;
+    // }
 
     const validPassword = await userData.checkPassword(req.body.password);
 
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-    }
+    // if (!validPassword) {
+    //   res
+    //     .status(400)
+    //     .json({ message: 'Incorrect email or password. Please try again!' });
+    //   return;
+    // }
 
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
