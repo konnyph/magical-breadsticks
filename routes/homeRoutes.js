@@ -29,6 +29,8 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+
 // Login route
 router.get('/login', (req, res) => {
     // If the user is already logged in, redirect to the homepage

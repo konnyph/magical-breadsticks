@@ -23,27 +23,25 @@
         <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavDropdown">
             <ul class="nav">
               <li class="nav-item">
-                <a id="signup-btn" class="nav-link" href="./signup.html">Sign Up</a>
+                <a id="signup-btn" class="nav-link" href="./index.html">Back to Login</a>
               </li>
             </ul>
           </div>
     </nav>
 
     <div id="form-content" class="fadeInDown">
-        <form id="login-content" action="/api/user/login" method="post">
+        <form id="login-content" action="/api/user" method="post">
             <img id="login-img" src=".\Images\breadstick-icon.jpg" alt="Breadstick Icon" height="50px" width="50px"></img>
             <br>
             <!--<label for="uname">Username:</label><br>-->
             <input type="text" id="uname" name="name" placeholder="Username"><br>
             <!--<label for="email">Email:</label><br>-->
-            <input type="text" id="email" name="email" placeholder="Email"><br>
+            <input type="text" id="email" name="email" placeholder="Email"><br><br>
             <!--<label for="pword">Password:</label><br>-->
-            <input type="password" id="pword" name="password" placeholder="Password"><br><br>
-            <input type="submit" value="Log In">
+            <input type="password" id="pword" name="password" placeholder="Password">
+            <input type="password" id="pword" name="password2" placeholder="Verify Password"><br><br>
+            <input type="submit" value="Sign Up">
         </form>
-    </div>
-    <div>
-        
     </div>
     <footer class="fixed-bottom bg-dark"> Magical Breadsticks &copy; 2023 </footer>
     
@@ -54,5 +52,3 @@
 </body>
 
 </html>
-
-
