@@ -115,27 +115,12 @@ h1 {
     float: inline-end;
 }
 
-#pagetwo-header {
-    padding: 10px;
-    margin-bottom: 20px;
-    width:450px;
-    height: auto;
-    background-color: #fab732;
-    border: 4px solid #000000c9;
-    border-radius: 20px;
-}
-
 form {
     text-align: center;
     font-size: x-large;
     margin-left: 50px;
     margin-right: 50px;
 }
-
-input[type=text] {
-    border: none;
-    border-bottom: 2px solid lightskyblue;
-  }
 
 footer {
         font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
@@ -189,7 +174,6 @@ footer {
     display: flex;
     margin-left: 15%;
 }
-
 
 @media (max-width: 480px) {
     body {

@@ -74,7 +74,7 @@ function fetchDallE(payLoad,x,i) {
         x.append(`
         <figure class="figure comicContainer">
             <img src="${APIResponse.data[0].url}" class="figure-img img-fluid rounded " alt="Image${i+1}">
-            <figcaption class="figure-caption">${captions[i]}</figcaption>
+            <figcaption id="fig-cap" class="figure-caption">${captions[i]}</figcaption>
         </figure>`);
     })
         .catch(error => {
@@ -162,7 +162,7 @@ setTimeout(function(){
 })
 
 
-}, 5000)
+})
 
 clearEl.on("click", (event) => {
     event.preventDefault();
