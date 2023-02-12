@@ -1,10 +1,14 @@
 const express = require('express');
+
+const app = express();
 const router = express.Router();
 const user = require('../../models/User');
 const bcrypt = require('bcrypt');
 const sessions = require('express-session');
 const path = require('path')
 const cookieParser = require("cookie-parser");
+const comic = require('../../models/comicUser');
+const comicUser = require('../../models/comicUser');
 
 const oneDay = 1000 * 60 * 60 * 24;
 
@@ -27,7 +31,7 @@ router.get('/', (req, res) => {
       res.json(userData);
     });
   });
-
+  
   router.post('/login',async (req,res) => {
 
   const userData = await user.findOne({
@@ -57,6 +61,8 @@ router.get('/', (req, res) => {
     }
 })
 
+
+
 router.post('/', async (req, res) => {
       await user.create({
       name: req.body.name,
@@ -71,49 +77,96 @@ router.post('/', async (req, res) => {
       });
   });
 
-//   router.post('/login', async (req, res) => {
-//     try {
-//       const userData = await user.findOne({
-//         where: {
-//           email: req.body.email,
-//           // we don't need this here
-//           // password: req.body.password
+// INSERTING a route.get for comic route
+// ============SENDING DATA AS JSON=================
+router.get('/comic', async (req, res) => {
+  try {
+    const comicData = await comicUser.findAll({
+      include: [
+        {
+          model: user,
+          attributes: ['id'],
+        },
+      ],
+    });
+
+    const comicUserInput = comicData.map((comicUser) =>
+      comicUser.get({ plain: true })
+    );
+
+    res.json(comicUserInput);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+app.get('/comic', async(req, res) => {
+  try {
+    const comicData = await comicUser.findAll({
+      include: [
+        {
+          model: user,
+          attributes: ['id'],
+        },
+      ],
+    });
+
+    const comicUserInput = comicData.map((comicUser) =>
+      comicUser.get({ plain: true })
+    );
+
+    res.json(comicUserInput);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+// CREATE A EVENT LISTENER FOR THE SUBMIT BUTTON
+// document.getElementById('storySubmit').addEventListener('click', function(event) {
+//   event.preventDefault(); // prevent the default form submission
+//   window.location.href = '/api/user/comic'; // redirect the user to the desired route
+// });
+
+// ============SENDING DATA TO HTML(THE BELOW CODE)=====
+
+// router.get('/comic', async (req, res) => {
+//   try {
+//     const comicData = await comicUser.findAll({
+//       include: [
+//         {
+//           model: user,
+//           attributes: ['id'],
 //         },
-//       });
-  
-//       if (!userData) {
-//         res
-//           .status(400)
-//           .json({ message: 'Incorrect email or password. Please try again!' });
-//         return;
-//       }
-  
-//       const validPassword = await bcrypt.compare(req.body.password, userData.password);
-  
-//       if (!validPassword) {
-//         res
-//           .status(400)
-//           .json({ message: 'Incorrect email or password. Please try again!' });
-//         return;
-//       }
-  
-//       // Once the user successfully logs in, set up the sessions variable 'loggedIn'
-//       req.session.save(() => {
-//         session=req.session;
-//         session.userid=req.body.username;
-//         console.log(req.session)
-//         res.send(`${__dirname}/../../public/comicindex.html`);
-  
-//         res
-//           .status(200)
-//           console.log(req.session.loggedIn)
-//           .json({ user: userData, message: 'You are now logged in!' });
-//       });
-//     } catch (err) {
-//       console.log(err);
-//       res.status(500).json(err);
-//     }
-//   });
+//       ],
+//     });
+
+//     const comicUserInput = comicData.map((comicUser) =>
+//       comicUser.get({ plain: true })
+//     );
+    
+//     res.sendFile(path.join(__dirname, '..', '..', 'public', 'comicindex.html'));
+    
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+// app.use(express.static(path.join(__dirname, 'public')));
+
+// // Route to serve comicindex.html
+// app.get('/api/user/comic', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'public', 'comicindex.html'));
+// });
+
+
+
+
+
+
+// ========================testing comic route end================
+
+
   
   // Logout
     router.get('/logout',(req,res) => {
