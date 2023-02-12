@@ -28,6 +28,15 @@ router.post('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  // Otherwise, render the 'login' template
+  res.render('login');
+});
 
 // Login Route
 router.post('/login', async (req, res) => {
