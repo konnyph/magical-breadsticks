@@ -27,40 +27,6 @@ router.post('/', async (req, res) => {
       });
   });
 
-
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect to the homepage
-  if (req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  // Otherwise, render the 'login' template
-  res.render('login');
-});
-
-// Login Route
-router.post('/login', async (req, res) => {
-  try {
-    const userData = await User.findOne({
-      where: {
-        email: req.body.email,
-        password: req.body.password
-      },
-    });
-
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
-      return;
-=======
   router.post('/login', async (req, res) => {
     try {
       const userData = await user.findOne({
@@ -98,7 +64,6 @@ router.post('/login', async (req, res) => {
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
-
     }
   });
   
