@@ -1,8 +1,25 @@
-const router = require('express').Router();
+const express = require('express');
+
+const app = express();
+const router = express.Router();
 const user = require('../../models/User');
-const User = require('../../models/User.js');
-const bcrypt = require ('bcrypt');
-const { where } = require('sequelize');
+const bcrypt = require('bcrypt');
+const sessions = require('express-session');
+const path = require('path')
+const cookieParser = require("cookie-parser");
+const comic = require('../../models/comicUser');
+const comicUser = require('../../models/comicUser');
+
+const oneDay = 1000 * 60 * 60 * 24;
+
+router.use(sessions({
+  secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+  saveUninitialized:true,
+  cookie: { maxAge: oneDay },
+  resave: false
+}));
+
+router.use(express.static(path.join(__dirname,'..', '..' , 'public')));
 
 
 // Login Route
