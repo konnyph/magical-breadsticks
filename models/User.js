@@ -15,7 +15,7 @@ UserCreate.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
@@ -25,7 +25,7 @@ UserCreate.init(
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       unique: true,
       validate: {
         isEmail: true,

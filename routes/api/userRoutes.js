@@ -4,22 +4,30 @@ const User = require('../../models/User.js');
 const bcrypt = require ('bcrypt');
 const { where } = require('sequelize');
 
-// GET all users
-router.get('/', async (req, res) => {
+
+// Login Route
+router.post('/login', async (req, res) => {
   try {
-    const user = await User.findall({
-    where: {
-      email: req.body.email
+    const userData = await User.findOne({ where: {username: req.body.username}});
+    if (!userData){
+      // return error if username doesn't match
+      res.status(401).json({ message: `Login failed. Please try again.`});
+      return;
     }
-  });
-    await bcrypt.compare(req.body.password, user.password) ? res.json(user):
-    res.status(401).json({
-      message: `You are not logged in...please try again.`
-    })
-  } catch (err) {
-    // res.status(500).json(err);
+    // use bcrypt.compare to compare the provided password to the hashed password
+    const validPassword = await bcrypt.compare(req.body.password, user.password);
+    // return error if password doesn't match
+    if (!validPassword) { 
+      res.status(401).json({ message: `Login failed. Please try again.`});
+      return;
+    }
+    // if username and password match
+    res.status(200).json({message: 'Welcome back!'});
+  } catch (err) { 
+    res.status(404).json(err);
   }
 });
+    
 
 // CREATE a new user
 router.post('/', async (req, res) => {
@@ -35,54 +43,7 @@ router.post('/', async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(401).json({
-      message: `You are not logged in...please try again.`
-    });
-  }
-});
-
-// Login Route
-router.post('/login', async (req, res) => {
-  try {
-    const user = await User.findOne({
-      where: {
-        email: req.body.email
-      }
-    });
-
-    await bcrypt.compare(req.body.password, user.password) ? res.json(user) :
-    res.status(401).json({
-      message: `You are not logged in...`
-      });
-    
-
-    // if (!userData) {
-    //   res
-    //     .status(401)
-    //     .json({ message: 'Incorrect email or password. Please try again!' });
-    //   return;
-    // }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    // if (!validPassword) {
-    //   res
-    //     .status(400)
-    //     .json({ message: 'Incorrect email or password. Please try again!' });
-    //   return;
-    // }
-
-    // Once the user successfully logs in, set up the sessions variable 'loggedIn'
-    req.session.save(() => {
-      req.session.loggedIn = true;
-
-      res
-        .status(200)
-        .json({ user: userData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    res.status(401).json(err);
   }
 });
 
@@ -99,3 +60,36 @@ router.post('/logout', (req, res) => {
 });
 
   module.exports=router
+
+// GET all users
+// router.get('/', async (req, res) => {
+//   try {
+//     const user = await User.findall({
+//     where: {
+//       email: req.body.email
+//     }
+//   });
+//     await bcrypt.compare(req.body.password, user.password) ? res.json(user):
+//     res.status(401).json({
+//       message: `You are not logged in...please try again.`
+//     })
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+    
+
+    // Once the user successfully logs in, set up the sessions variable 'loggedIn'
+//     req.session.save(() => {
+//       req.session.loggedIn = true;
+//       res
+//         .status(200)
+//         .json({ user: userData, message: 'You are now logged in!' });
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
