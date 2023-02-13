@@ -1,0 +1,48 @@
+.comicContainer {
+    border-radius: 10px;
+    background-color: #e2e2e2;
+    box-shadow: 3px 3px #332D2D;
+}
+
+.figure-caption {
+    background-color: #fab732;
+}
+
+.figure-img {
+    margin: 8px;
+    border: 2px solid black;
+}
+
+#fig-cap {
+    color: #000000;
+    border-top: 3px solid black;
+}
+
+#pageTwo {
+    justify-content: center;
+}
+
+#storyTime{
+    background-color: #e2e2e2;
+    width: 80%;
+    margin: auto;
+    border: solid 4px #332D2D;
+    border-radius: 20px;
+    box-shadow: 5px 5px #332D2D;
+}
+
+#comic-btn {
+    padding-bottom: 20px;
+}
+
+#pagetwo-header {
+    padding: 10px;
+    margin-bottom: 20px;
+    width:450px;
+    height: auto;
+    background-color: #fab732;
+    border: 4px solid #000000c9;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 3px 3px #332D2D;
+}
