@@ -21,7 +21,7 @@ function fetchText(payLoad,i) {
     fetch("https://api.openai.com/v1/completions", {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('key')}`,
+            'Authorization': `Bearer ${API_KEY}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
@@ -53,7 +53,7 @@ function fetchDallE(payLoad,x,i) {
     fetch("https://api.openai.com/v1/images/generations", {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('key')}`,
+            'Authorization': `Bearer ${API_KEY}`,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({

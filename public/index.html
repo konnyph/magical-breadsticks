@@ -30,23 +30,25 @@
     </nav>
 
     <div id="form-content" class="fadeInDown">
-        <form id="login-content" onsubmit="testLogin()">
+        <form id="login-content" action="/api/user/login" method="post">
             <img id="login-img" src=".\Images\breadstick-icon.jpg" alt="Breadstick Icon" height="50px" width="50px"></img>
             <br>
             <!--<label for="uname">Username:</label><br>-->
-            <input type="text" id="uname" name="uname" placeholder="Username"><br>
+            <input type="text" id="uname" name="name" placeholder="Username"><br>
             <!--<label for="email">Email:</label><br>-->
             <input type="text" id="email" name="email" placeholder="Email"><br>
             <!--<label for="pword">Password:</label><br>-->
-            <input type="password" id="pword" name="pword" placeholder="Password"><br><br>
+            <input type="password" id="pword" name="password" placeholder="Password"><br><br>
             <input type="submit" value="Log In">
         </form>
+    </div>
+    <div>
+        
     </div>
     <footer class="fixed-bottom bg-dark"> Magical Breadsticks &copy; 2023 </footer>
     
     <script>
-
-        function testLogin(){alert("test")}
+        // function testLogin(){alert("test")}
     </script>
 
 </body>

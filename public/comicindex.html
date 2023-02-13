@@ -76,7 +76,11 @@
         </div>
         <br>
         <div id="comic-btn">
-          <button id="storySubmit" type="submit" class="btn btn-primary btn-success">Submit</button>
+          <form action="api/user/comic" method="post">
+            <!-- form fields here -->
+            <button id="storySubmit" type="submit" class="btn btn-primary btn-success">Submit</button>
+            
+          </form>
           <button id="clear" class="btn btn-primary btn-danger">Clear</button>
           <button href="./comicindex.html" button id="refresh" class="btn btn-warning"> refresh </button>
         </div>
@@ -106,5 +110,6 @@
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="./assets/js/storyData.js"></script>
 <script src="./assets/js/script.js"> </script>
+
 
 </html>
