@@ -83,6 +83,7 @@ function fetchDallE(payLoad,x,i) {
     var randomGen = Math.floor(Math.random() * stories.length);
     var storyCurrent= stories[randomGen];
     var storyGen = storyCurrent.narration;
+    console.log(storyCurrent);
 
 // the body of the main script is wrapped in a setTimeout function to prevent user from spamming API
 // thus preventing failures.
@@ -108,29 +109,30 @@ setTimeout(function(){
 
     storySubmitBtnEl.on('click', function(event){
         event.preventDefault(event);
-        storySubmitBtnEl.attr('class', 'invisible');
-        clearEl.attr('class', 'invisible');
-        pageTwoEl.attr('class', 'invisible');
-        loadingEl.attr('class', 'loading');
-        comicLayoutEl.empty()
-        // pageThreeEl.removeAttr('class');
-        pageTwoEl.remove();
         for (i=0; i < storyGen.length; ++i) {
             var tempPayload = [];
             tempPayload[0] = $(`#payLoadA${i}`).val();
             tempPayload[1] = $(`#payLoadB${i}`).val();
             var currentTemp = stories[randomGen].payLoadGuide[i];
+            // console.log(currentTemp);
             var index = 1;
                 for (n=0; n<2; ++n) {
                     index = currentTemp.indexOf('*');
                     currentTemp[index] = ` ${tempPayload[n]} `;
                 }
             currentTemp = currentTemp.join('');
+            // console.log(currentTemp);
             payLoad[i] = `${storyCurrent.style} ${currentTemp}`;
             }
-            console.log(captions);
+            storySubmitBtnEl.attr('class', 'invisible');
+            clearEl.attr('class', 'invisible');
+            pageTwoEl.attr('class', 'invisible');
+            loadingEl.attr('class', 'loading');
+            pageTwoEl.remove();
+
             var i = 0
             payLoad.forEach((element) => {
+                console.log(element)
               fetchText(element,i);
               if (i === 0) {
                 fetchDallE(element, target1EL, i);

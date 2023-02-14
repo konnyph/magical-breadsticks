@@ -6,7 +6,6 @@ const user = require('../../models/User');
 const bcrypt = require('bcrypt');
 const sessions = require('express-session');
 const path = require('path')
-const cookieParser = require("cookie-parser");
 const comic = require('../../models/comicUser');
 // const comicUser = require('../../models/comicUser');
 
