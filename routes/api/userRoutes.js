@@ -21,11 +21,10 @@ router.use(sessions({
 
 router.use(express.static(path.join(__dirname,'..', '..' , 'public')));
 
-
 // Login Route
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: {username: req.body.username}});
+    const userData = await User.findOne({ where: {name: req.body.name}});
     if (!userData){
       // return error if username doesn't match
       res.status(401).json({ message: `Login failed. Please try again.`});
@@ -45,7 +44,6 @@ router.post('/login', async (req, res) => {
   }
 });
     
-
 // CREATE a new user
 router.post('/', async (req, res) => {
   try {
