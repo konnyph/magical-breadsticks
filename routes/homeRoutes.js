@@ -15,8 +15,8 @@ router.get('/', async (req, res) => {
     //   ],
     });
 
-    const users = userData.map((user) =>
-      user.get({ plain: true })
+    const users = userData.map((users) =>
+      users.get({ plain: true })
     );
     
     res.render('homepage', {

@@ -2,6 +2,12 @@ DROP DATABASE IF EXISTS project2_db;
 
 CREATE DATABASE project2_db;
 
+-- DROP DATABASE IF EXISTS comic_users;
+
+-- CREATE DATABASE comic_users;
+
+
+
 -- USE project2_db;
 
 -- CREATE TABLE users (
