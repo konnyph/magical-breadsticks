@@ -23,12 +23,12 @@
 }
 
 #storyTime{
-    background-color: #e2e2e2;
+    background-color: #eeeeee;
     width: 80%;
     margin: auto;
     border: solid 4px #332D2D;
     border-radius: 20px;
-    box-shadow: 5px 5px #332D2D;
+    box-shadow: 5px 5px #6d6363;
 }
 
 #comic-btn {
@@ -44,5 +44,5 @@
     border: 4px solid #000000c9;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: 3px 3px #332D2D;
+    box-shadow: 3px 3px #6d6363;
 }
