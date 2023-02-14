@@ -38,6 +38,11 @@ UserCreate.init(
         len: [7]
       }
     },
+    userComicInput: {
+      type: DataTypes.STRING,
+      allowNull: true,
+
+    }
   },
   {
     // Link to database connection
