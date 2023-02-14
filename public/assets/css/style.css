@@ -14,7 +14,6 @@ body {
 
 h1 {
     display: inline;
-    font-weight: bold;
 }
 
 #madLibs {
@@ -45,6 +44,11 @@ h1 {
     color: white;
     padding: 10px;
 
+}
+
+.nav-welcome {
+    color: rgb(255, 255, 255);
+    margin-right: 2%;
 }
 
 .rounded-corners {
