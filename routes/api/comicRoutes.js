@@ -52,7 +52,7 @@ router.post('/text', async (req, res) => {
         },
         body: JSON.stringify({
             "model": "text-davinci-003",
-            "prompt": `make the following a caption for a scene ${await req.body.payLoad}`,
+            "prompt": [`make the following a caption for a scene ${await req.body.payLoad}`],
             "max_tokens": 100,
             "temperature": .9,
         })
