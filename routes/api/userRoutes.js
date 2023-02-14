@@ -8,7 +8,7 @@ const sessions = require('express-session');
 const path = require('path')
 const cookieParser = require("cookie-parser");
 const comic = require('../../models/comicUser');
-const comicUser = require('../../models/comicUser');
+// const comicUser = require('../../models/comicUser');
 
 const oneDay = 1000 * 60 * 60 * 24;
 
@@ -79,49 +79,49 @@ router.post('/', async (req, res) => {
 
 // INSERTING a route.get for comic route
 // ============SENDING DATA AS JSON=================
-router.get('/comic', async (req, res) => {
-  try {
-    const comicData = await comicUser.findAll({
-      include: [
-        {
-          model: user,
-          attributes: ['id'],
-        },
-      ],
-    });
+// router.get('/comic', async (req, res) => {
+//   try {
+//     const comicData = await comicUser.findAll({
+//       include: [
+//         {
+//           model: user,
+//           attributes: ['id'],
+//         },
+//       ],
+//     });
 
-    const comicUserInput = comicData.map((comicUser) =>
-      comicUser.get({ plain: true })
-    );
+//     const comicUserInput = comicData.map((comicUser) =>
+//       comicUser.get({ plain: true })
+//     );
 
-    res.json(comicUserInput);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     res.json(comicUserInput);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
-app.get('/comic', async(req, res) => {
-  try {
-    const comicData = await comicUser.findAll({
-      include: [
-        {
-          model: user,
-          attributes: ['id'],
-        },
-      ],
-    });
+// app.get('/comic', async(req, res) => {
+//   try {
+//     const comicData = await comicUser.findAll({
+//       include: [
+//         {
+//           model: user,
+//           attributes: ['id'],
+//         },
+//       ],
+//     });
 
-    const comicUserInput = comicData.map((comicUser) =>
-      comicUser.get({ plain: true })
-    );
+//     const comicUserInput = comicData.map((comicUser) =>
+//       comicUser.get({ plain: true })
+//     );
 
-    res.json(comicUserInput);
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+//     res.json(comicUserInput);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 // CREATE A EVENT LISTENER FOR THE SUBMIT BUTTON
 // document.getElementById('storySubmit').addEventListener('click', function(event) {
 //   event.preventDefault(); // prevent the default form submission
