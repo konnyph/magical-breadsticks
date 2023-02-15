@@ -124,6 +124,7 @@ setTimeout(function(){
             currentTemp = currentTemp.join('');
             // console.log(currentTemp);
             payLoad[i] = `${storyCurrent.style} ${currentTemp}`;
+            console.log(payLoad);
             }
             storySubmitBtnEl.attr('class', 'invisible');
             clearEl.attr('class', 'invisible');
@@ -186,6 +187,8 @@ newStoryEl.on("click", (event) => {
             historyImgArr[n]=tempImg;
             historyCapArr[n]=tempCap;
         }
+        console.log(historyCapArr);
+        console.log(historyImgArr);
         localStorage.setItem('historyImg', `${JSON.stringify(historyImgArr)}`);
         localStorage.setItem('historyCap', `${JSON.stringify(historyCapArr)}`);
     }
