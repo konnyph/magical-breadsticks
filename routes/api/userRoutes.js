@@ -40,9 +40,7 @@ router.get('/', (req, res) => {
       });
     // console.log(userData)
     if (userData === null) {
-        res
-          .status(400)
-          .json({ message: 'Incorrect email or password. Please try again!' });
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'incorrectLogin.html'))
         return;
       }
     let validPwd = await bcrypt.compare(
@@ -71,10 +69,10 @@ router.post('/', async (req, res) => {
       password: await bcrypt.hash(req.body.password, 10)
     })
       .then((result) => {
-        res.json(result);
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'));
       })
       .catch((err) => {
-        res.json(err.errors[0].message);
+        res.redirect('/api/user/signup.html')
       });
   });
 
