@@ -56,7 +56,7 @@ router.get('/', (req, res) => {
         res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'))
     }
     else{
-        res.send('Invalid username or password');
+      res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'incorrectLogin.html'))
     }
 })
 
@@ -69,7 +69,7 @@ router.post('/', async (req, res) => {
       password: await bcrypt.hash(req.body.password, 10)
     })
       .then((result) => {
-        res.json(result);
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'));
       })
       .catch((err) => {
         res.json(err.errors[0].message);
