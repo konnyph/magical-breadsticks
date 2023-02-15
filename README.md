@@ -1,4 +1,4 @@
-# <img src="./public/images/breadstick-icon.jpg" width = "50px"> Magical Breadsticks
+# <img src="./public/Images/breadstick-icon.jpg" width = "50px"> Magical Breadsticks
 
  ## Description
 ###
@@ -27,8 +27,6 @@
   ### 
   <a href= https://github.com/konnyph/magical-breadsticks> Github
 
-  <a href= (add deployed link here)> Deployed link 
-
   <a href= https://magical-breadsticks.herokuapp.com/ > Heroku
 
 <br>
@@ -43,7 +41,7 @@
 
 <br>
 
-<img src="./public/images/Magic-homepage.png" width = "400px">
+<img src="./public/Images/Magic-homepage.png" width = "400px">
 
  
 
