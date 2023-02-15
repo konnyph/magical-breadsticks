@@ -6,7 +6,6 @@ const user = require('../../models/User');
 const bcrypt = require('bcrypt');
 const sessions = require('express-session');
 const path = require('path')
-const comic = require('../../models/comicUser');
 // const comicUser = require('../../models/comicUser');
 
 const oneDay = 1000 * 60 * 60 * 24;
@@ -33,7 +32,7 @@ router.post('/login', async (req, res) => {
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     // return error if password doesn't match
     if (!validPassword) { 
-      res.status(401).json({ message: `Login failed. Please try again.`});
+      res.res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'incorrectLogin.html'));
       return;
     }
     // if username and password match
@@ -51,7 +50,7 @@ router.post('/', async (req, res) => {
       password: await bcrypt.hash(req.body.password, 10)
     })
       .then((result) => {
-        res.json(result);
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'));
       })
       .catch((err) => {
         res.json(err.errors[0].message);
