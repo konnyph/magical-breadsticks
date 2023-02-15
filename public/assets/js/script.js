@@ -8,6 +8,7 @@ var target2EL = $('#target2');
 var target3EL = $('#target3');
 var target4EL = $('#target4');
 var saveBtnEl = $('#saveBtn');
+var newStoryEl = $('#new-story');
 var quotes = [];
 var payLoad = [];
 var captions=[];
@@ -169,6 +170,11 @@ clearEl.on("click", (event) => {
      Bremove.val('');
     }
   })
+
+newStoryEl.on("click", (event) => {
+    event.preventDefault();
+    location.reload();
+})
 
   saveBtnEl.on('click', function() {
     pageThreeEl.attr('class', 'invisible');
