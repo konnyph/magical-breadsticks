@@ -8,9 +8,6 @@
     "start": "node server.js",
     "seed": "node seeds.js"
   },
-  "engines": {
-    "node": "14.15.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/konnyph/magical-breadsticks.git"
