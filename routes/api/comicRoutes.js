@@ -28,7 +28,7 @@ router.post('/image', async (req, res) => {
     })
     .then(data=>{
         APIResponse =  data;
-        // console.log(data);
+        console.log(data);
         pictureUrl= APIResponse.data[0].url;
         return pictureUrl;
     })
