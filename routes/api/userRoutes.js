@@ -57,6 +57,8 @@ router.post('/', async (req, res) => {
       });
   });
 
+  module.exports = router
+
 // INSERTING a route.get for comic route
 // ============SENDING DATA AS JSON=================
 // router.get('/comic', async (req, res) => {

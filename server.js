@@ -12,9 +12,9 @@ const dotenv = require('dotenv').config();
 const oneDay = 1000 * 60 * 60 * 24;
 
 let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 3001;
-}
+// if (port == null || port == "") {
+//   port = 3001;
+// }
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
