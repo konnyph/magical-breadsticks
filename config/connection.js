@@ -4,16 +4,16 @@ const dotenv = require('dotenv').config();
 // Create a connection object
 const sequelize = new Sequelize(
   // Database name
-  'project2_db',
+  `${process.env.DB_NAME}`,
   // User
-  `${process.env.DB_userName}`,
+  `${process.env.DB_USERNAME}`,
   // Password
   `${process.env.DB_PW}`,
   {
     // Database location
-    host: 'localhost',
+    host: `${process.env.JAWS_HOST}`,
     dialect: 'mysql',
-    port: 3306
+    port: `${process.env.JAWS_PORT}`
   }
 );
 
