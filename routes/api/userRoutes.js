@@ -56,7 +56,9 @@ router.get('/', (req, res) => {
         res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'))
     }
     else{
-        res.send('Invalid username or password');
+        // res.send('Invalid username or password');
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'incorrectLogin.html'))
+
     }
 })
 
