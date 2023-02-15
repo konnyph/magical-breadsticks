@@ -12,7 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Mono:ital,wght@1,300&display=swap"
     rel="stylesheet">
-    <link rel="icon" href="public/Images/breadstick-icon.jpg"/>
     <title>Magical Breadsticks</title>
 </head>
 
@@ -32,6 +31,7 @@
     <div id="form-content" class="fadeInDown">
         <form id="login-content" action="/api/user/login" method="post">
             <img id="login-img" src=".\Images\breadstick-icon.jpg" alt="Breadstick Icon" height="50px" width="50px"></img>
+            <h3>Sign In:</h3>
             <br>
             <!--<label for="uname">Username:</label><br>-->
             <input type="text" id="uname" name="name" placeholder="Username"><br>
@@ -46,10 +46,11 @@
         
     </div>
     <footer class="fixed-bottom bg-dark"> Magical Breadsticks &copy; 2023 </footer>
-    
+<!--     
     <script>
-        // function testLogin(){alert("test")}
-    </script>
+        function testLogin(){alert("test")}
+    </script> -->
+    <script src="../Utilities/login.js"></script>
 
 </body>
 

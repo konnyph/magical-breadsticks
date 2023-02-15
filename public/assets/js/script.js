@@ -18,27 +18,23 @@ var comicText = [];
 // API functions
 // this function takes in words and makes them better
 function fetchText(payLoad,i) {
-    fetch("https://api.openai.com/v1/completions", {
-        method: 'POST',
+    fetch("/api/comicFetch/text", {
+        method: 'POST,',
         headers: {
-            'Authorization': `Bearer ${API_KEY}`,
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
+          },
         body: JSON.stringify({
-            "model": "text-davinci-003",
-            "prompt": `make the following a caption for a scene ${payLoad}`,
-            "max_tokens": 100,
-
-            "temperature": .9,
+            "payload": `${payLoad}`
         })
     })
     .then(response => {
         return response.json()
     })
     .then(data=>{
-        APIResponse =data;
-        captions[i]=(data.choices[0].text);
-        // captions.undefined returns back the string.
+        console.log(data)
+        captions[i] =data;
+        console.log(captions);
     })
         .catch(error => {
             console.log(error)
@@ -50,30 +46,27 @@ function fetchText(payLoad,i) {
 
 //payload is single string
 function fetchDallE(payLoad,x,i) {
-    fetch("https://api.openai.com/v1/images/generations", {
+    fetch("/api/comicFetch/image", {
         method: 'POST',
         headers: {
-            'Authorization': `Bearer ${API_KEY}`,
+            'Accept': 'application/json',
             'Content-Type': 'application/json'
-        },
+          },
         body: JSON.stringify({
-            "prompt": `${payLoad}`,
-            "n": 1,
-            "size": `256x256`,
-            "response_format": 'url'
+            "payload": `${payLoad}`,
         })
     })
     .then(response => {
         return response.json();
     })
     .then(data=>{
-        APIResponse =  data;
+        pictureUrl =  data;
         // console.log(data);
-        pictureUrl= APIResponse.data[0].url;
-        urls[i]=pictureUrl;
+        // pictureUrl= APIResponse.data[0].url;
+        // urls[i]=pictureUrl;
         x.append(`
         <figure class="figure comicContainer">
-            <img src="${APIResponse.data[0].url}" class="figure-img img-fluid rounded " alt="Image${i+1}">
+            <img src="${pictureUrl}" class="figure-img img-fluid rounded " alt="Image${i+1}">
             <figcaption id="fig-cap" class="figure-caption">${captions[i]}</figcaption>
         </figure>`);
     })
@@ -90,6 +83,7 @@ function fetchDallE(payLoad,x,i) {
     var randomGen = Math.floor(Math.random() * stories.length);
     var storyCurrent= stories[randomGen];
     var storyGen = storyCurrent.narration;
+    console.log(storyCurrent);
 
 // the body of the main script is wrapped in a setTimeout function to prevent user from spamming API
 // thus preventing failures.
@@ -115,29 +109,30 @@ setTimeout(function(){
 
     storySubmitBtnEl.on('click', function(event){
         event.preventDefault(event);
-        storySubmitBtnEl.attr('class', 'invisible');
-        clearEl.attr('class', 'invisible');
-        pageTwoEl.attr('class', 'invisible');
-        loadingEl.attr('class', 'loading');
-        comicLayoutEl.empty()
-        // pageThreeEl.removeAttr('class');
-        pageTwoEl.remove();
         for (i=0; i < storyGen.length; ++i) {
             var tempPayload = [];
             tempPayload[0] = $(`#payLoadA${i}`).val();
             tempPayload[1] = $(`#payLoadB${i}`).val();
             var currentTemp = stories[randomGen].payLoadGuide[i];
+            // console.log(currentTemp);
             var index = 1;
                 for (n=0; n<2; ++n) {
                     index = currentTemp.indexOf('*');
                     currentTemp[index] = ` ${tempPayload[n]} `;
                 }
             currentTemp = currentTemp.join('');
+            // console.log(currentTemp);
             payLoad[i] = `${storyCurrent.style} ${currentTemp}`;
             }
+            storySubmitBtnEl.attr('class', 'invisible');
+            clearEl.attr('class', 'invisible');
+            pageTwoEl.attr('class', 'invisible');
+            loadingEl.attr('class', 'loading');
+            pageTwoEl.remove();
 
             var i = 0
-            payLoad.forEach(element => {
+            payLoad.forEach((element) => {
+                console.log(element)
               fetchText(element,i);
               if (i === 0) {
                 fetchDallE(element, target1EL, i);
