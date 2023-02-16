@@ -20,7 +20,7 @@ var comicText = [];
 // this function takes in words and makes them better
 function fetchText(payLoad,i) {
     fetch("/api/comicFetch/text", {
-        method: 'POST,',
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
