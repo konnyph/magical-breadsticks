@@ -68,8 +68,8 @@ function fetchDallE(payLoad,x,i) {
         x.append(`
         <figure class="figure comicContainer">
             <img src="${pictureUrl}" class="figure-img img-fluid rounded " alt="Image${i+1}">
-            <figcaption id="fig-cap" class="figure-caption">${captions[i]}</figcaption>
         </figure>`);
+        // <figcaption id="fig-cap" class="figure-caption">${captions[i]}</figcaption> insert above img src two lines above
     })
         .catch(error => {
             console.log(error)
