@@ -20,7 +20,7 @@ var comicText = [];
 // this function takes in words and makes them better
 function fetchText(payLoad,i) {
     fetch("/api/comicFetch/text", {
-        method: 'POST,',
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -68,8 +68,9 @@ function fetchDallE(payLoad,x,i) {
         x.append(`
         <figure class="figure comicContainer">
             <img src="${pictureUrl}" class="figure-img img-fluid rounded " alt="Image${i+1}">
-            <figcaption id="fig-cap" class="figure-caption">${captions[i]}</figcaption>
+            <figcaption id="fig-cap" class="figure-caption">Comic Pane ${i+1}</figcaption>
         </figure>`);
+        // <figcaption id="fig-cap" class="figure-caption">${captions[i]}</figcaption> insert above img src two lines above
     })
         .catch(error => {
             console.log(error)
@@ -176,35 +177,35 @@ newStoryEl.on("click", (event) => {
     location.reload();
 })
 
-  saveBtnEl.on('click', function() {
-    pageThreeEl.attr('class', 'invisible');
-    if (localStorage.getItem('historyImg')===null){
-        var historyCapArr = [];
-        var historyImgArr = [];
-        for (n=0; n < 4; ++n) {
-            var tempImg = urls[n];
-            var tempCap = captions[n];
-            historyImgArr[n]=tempImg;
-            historyCapArr[n]=tempCap;
-        }
-        console.log(historyCapArr);
-        console.log(historyImgArr);
-        localStorage.setItem('historyImg', `${JSON.stringify(historyImgArr)}`);
-        localStorage.setItem('historyCap', `${JSON.stringify(historyCapArr)}`);
-    }
+//   saveBtnEl.on('click', function() {
+//     pageThreeEl.attr('class', 'invisible');
+//     if (localStorage.getItem('historyImg')===null){
+//         var historyCapArr = [];
+//         var historyImgArr = [];
+//         for (n=0; n < 4; ++n) {
+//             var tempImg = urls[n];
+//             var tempCap = captions[n];
+//             historyImgArr[n]=tempImg;
+//             historyCapArr[n]=tempCap;
+//         }
+//         console.log(historyCapArr);
+//         console.log(historyImgArr);
+//         localStorage.setItem('historyImg', `${JSON.stringify(historyImgArr)}`);
+//         localStorage.setItem('historyCap', `${JSON.stringify(historyCapArr)}`);
+//     }
 
-    else {
-        var historyImgArr = JSON.parse(localStorage.getItem('historyImg'));
-        var historyCapArr = JSON.parse(localStorage.getItem('historyCap'));
-
-
-    for (n=0; n < captions.length; ++n) {
-        historyImgArr.push(urls[n]) 
-        historyCapArr.push(captions[n]);
-    }
-    }
+//     else {
+//         var historyImgArr = JSON.parse(localStorage.getItem('historyImg'));
+//         var historyCapArr = JSON.parse(localStorage.getItem('historyCap'));
 
 
-    localStorage.setItem('historyImg', `${JSON.stringify(historyImgArr)}`);
-    localStorage.setItem('historyCap', `${JSON.stringify(historyCapArr)}`);
-  }) 
+//     for (n=0; n < captions.length; ++n) {
+//         historyImgArr.push(urls[n]) 
+//         historyCapArr.push(captions[n]);
+//     }
+//     }
+
+    // Don't need these at the moment
+    // localStorage.setItem('historyImg', `${JSON.stringify(historyImgArr)}`);
+    // localStorage.setItem('historyCap', `${JSON.stringify(historyCapArr)}`);
+//   }) 

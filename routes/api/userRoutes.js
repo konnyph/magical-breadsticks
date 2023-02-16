@@ -62,19 +62,23 @@ router.get('/', (req, res) => {
 
 
 
-router.post('/', async (req, res) => {
+router.post('/createAccount', async (req, res) => {
       await user.create({
       name: req.body.name,
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, 10)
     })
       .then((result) => {
-        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'));
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'))
       })
       .catch((err) => {
-        res.redirect('/api/user/signup.html')
+        res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'signup.html'))
       });
   });
+
+// router.get ('/sucess', async (req,res) => {
+//  res.sendFile(path.join(__dirname,'..', '..' , 'public' , 'comicindex.html'))
+// })
 
 // INSERTING a route.get for comic route
 // ============SENDING DATA AS JSON=================

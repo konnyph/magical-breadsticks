@@ -43,7 +43,7 @@ router.post('/image', async (req, res) => {
     })});
 
 router.post('/text', async (req, res) => {
-    console.log(await req.body.payload);
+    let Payload = await req.body.payload
     fetch("https://api.openai.com/v1/completions", {
         method: 'POST',
         headers: {
@@ -52,7 +52,7 @@ router.post('/text', async (req, res) => {
         },
         body: JSON.stringify({
             "model": "text-davinci-003",
-            "prompt": [`make the following a caption for a scene ${await req.body.payLoad}`],
+            "prompt": [`make the following a caption for a scene ${Payload}`],
             "max_tokens": 100,
             "temperature": .9,
         })
@@ -69,7 +69,7 @@ router.post('/text', async (req, res) => {
             console.log(error)
         })
     .then((result) => {
-      res.json(result);
+      res.send(result);
     })
     .catch((err) => {
       res.json(err.errors[0].message);
