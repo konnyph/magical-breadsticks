@@ -2,8 +2,16 @@
 
  ## Description
 ###
- An AI generated Comic book generator with server functionality.  
+ An AI generated Comic book generator with user data server functionality.  
 
+ link to deployed site
+
+ https://magical-breadsticks.herokuapp.com/
+
+ # Technoligies Used
+
+ NODE.JS, EXPRESS, EXPRESS-Session Sequelize, mySQL, BCrypt, DOTENV, JAWSDB, OPEN AI Gallileo 3 model.
+ 
  <br>
 
   ## Table of Contents
