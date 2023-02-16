@@ -183,7 +183,7 @@ newStoryEl.on("click", (event) => {
         var historyImgArr = [];
         for (n=0; n < 4; ++n) {
             var tempImg = urls[n];
-            var tempCap = captions[n];
+            // var tempCap = captions[n];
             historyImgArr[n]=tempImg;
             historyCapArr[n]=tempCap;
         }
@@ -198,10 +198,10 @@ newStoryEl.on("click", (event) => {
         var historyCapArr = JSON.parse(localStorage.getItem('historyCap'));
 
 
-    for (n=0; n < captions.length; ++n) {
-        historyImgArr.push(urls[n]) 
-        historyCapArr.push(captions[n]);
-    }
+    // for (n=0; n < captions.length; ++n) {
+    //     historyImgArr.push(urls[n]) 
+    //     historyCapArr.push(captions[n]);
+    // }
     }
 
 
